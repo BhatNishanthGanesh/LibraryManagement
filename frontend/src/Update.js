@@ -14,7 +14,7 @@ setData((prevData) => ({ ...prevData, [name]: value }));
 //handle form submit
 const handleSubmit = (e) => {
 e.preventDefault();
-Axios.put('http://localhost:3100/IMS/${id}', { data })
+Axios.put(`http://localhost:3100/IMS/${id}`, { data })
 .then((res) => {
 alert("Data updated successfully!");
 setData({ Item_Name: "", Price: "", Quantity: "" });
