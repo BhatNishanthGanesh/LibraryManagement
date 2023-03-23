@@ -16,9 +16,10 @@ function Delete() {
 
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3100/IMS/${id}`)
+    alert('Deleted successfully');
+    setInventoryData(inventoryData.filter(item => item._id !== id))
       .then(response => {
-        alert('Deleted successfully');
-        setInventoryData(inventoryData.filter(item => item._id !== id));
+        
       })
       .catch(error => {
         console.log(error);

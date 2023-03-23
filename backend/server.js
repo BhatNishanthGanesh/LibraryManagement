@@ -1,86 +1,88 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+// app.js
 
-const app = express()
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Database Connection:---
-mongoose.set("strictQuery",false);
-mongoose.connect("mongodb+srv://Anudeep:Anudeep2003@cluster0.c232uy0.mongodb.net/new")
-.then(()=>{
-    console.log("MongoDb is Connected...");
-})
-.catch(()=>{
-    console.log("Error");
-})
-
-//Insert data to database
-
-app.post("/insert",(req,res)=>{
-    const data = req.body.data;
-
-    let conn = mongoose.connection;
-    conn.collection("InventoryMS").insertOne(data,(err)=>{
-        if(err){
-            console.log("Error");
-        }else{
-            console.log("Inserted successfully");
-            res.status(200).send("Success");
-        }
-    });
+mongoose.set('strictQuery', false);
+mongoose.connect('mongodb+srv://Anudeep:Anudeep2003@cluster0.c232uy0.mongodb.net/new', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-//to get the data from the database
+const inventorySchema = new mongoose.Schema({
+  Item_Name: String,
+  Price: String,
+  Quantity: String,
+});
+
+const Inventory = mongoose.model('Inventory', inventorySchema);
+
 app.get('/IMS', (req, res) => {
-    let conn = mongoose.connection;
-    conn.collection('InventoryMS').find({}).toArray((err, data) => {
-      if (err) {
-        console.log('Error');
-      } else {
-        res.status(200).json(data);
-      }
-    });
+  Inventory.find({}, (err, foundItems) => {
+    if (!err) {
+      res.send(foundItems);
+    } else {
+      console.log(err);
+    }
   });
-
-  //update the database 
-  app.put('/IMS/:id', (req, res) => {
-    let conn = mongoose.connection;
-    const IMSId = req.params.id;
-    const newData = req.body.data;
-    conn.collection('InventoryMS').updateOne(
-      { _id: IMSId },
-      { $set: newData },
-      (err, data) => {
-        if (err) {
-          console.log('Error');
-        } else {
-          res.status(200).send('Updated successfully');
-        }
-      }
-    );
-  });
-
-  //deleting from the databse
-  app.delete('/IMS/:id', (req, res) => {
-    let conn = mongoose.connection;
-    const IMSId = req.params.id;
-    conn.collection('InventoryMS').deleteOne(
-      { _id: IMSId },
-      (err, data) => {
-        if (err) {
-          console.log('Error');
-        } else {
-          res.status(200).send('Deleted successfully');
-        }
-      }
-    );
-  });
-  
-  
-// Server connection
-app.listen(3100,()=>{
-    console.log("Server is connected at Port 3100");
 });
 
+app.post('/insert', (req, res) => {
+  const itemName = req.body.data.Item_Name;
+  const price = req.body.data.Price;
+  const quantity = req.body.data.Quantity;
+
+  const newItem = new Inventory({
+    Item_Name: itemName,
+    Price: price,
+    Quantity: quantity,
+  });
+
+  newItem.save((err) => {
+    if (!err) {
+      res.send('Successfully added a new item.');
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+app.delete('/IMS/:id', (req, res) => {
+  const id = req.params.id;
+
+  Inventory.findByIdAndRemove(id, (err) => {
+    if (!err) {
+      console.log('Successfully deleted item.');
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+app.put("/IMS/:id", (req, res) => {
+  const { Item_Name, Price, Quantity } = req.body.data;
+  const id = req.params.id;
+
+  Inventory.findByIdAndUpdate(
+    id,
+    { Item_Name, Price, Quantity },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send("IMS data updated successfully!");
+      }
+    }
+  );
+});
+
+const port = process.env.PORT || 3100;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});

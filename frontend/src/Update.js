@@ -1,47 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function Update() {
-const [data, setData] = useState({ Item_Name: "", Price: "", Quantity: "" });
-const [id, setId] = useState("");
+  const [data, setData] = useState([]);
+  const [updateData, setUpdateData] = useState({ _id: "", Item_Name: "", Price: "", Quantity: "" });
 
-//handle input change
-const handleChange = (e) => {
-const { name, value } = e.target;
-setData((prevData) => ({ ...prevData, [name]: value }));
-};
+  useEffect(() => {
+    Axios.get("http://localhost:3100/IMS").then((response) => {
+      setData(response.data);
+    });
+  }, []);
 
-//handle form submit
-const handleSubmit = (e) => {
-e.preventDefault();
-Axios.put(`http://localhost:3100/IMS/${id}`, { data })
-.then((res) => {
-alert("Data updated successfully!");
-setData({ Item_Name: "", Price: "", Quantity: "" });
-setId("");
-})
-.catch((err) => {
-console.log(err);
-alert("Error updating data. Please try again.");
-});
-};
+  const changeHandler = (e) => {
+    let name = e.target.name;
+    let val = e.target.value;
+    setUpdateData({ ...updateData, [name]: val });
+  };
 
-return (
-<div className="App">
-<h2>Update Item</h2>
-<form onSubmit={handleSubmit}>
-<label>Item ID:</label>
-<input type="text" value={id} onChange={(e) => setId(e.target.value)} />
-<label>Item Name:</label>
-<input type="text" name="Item_Name" value={data.Item_Name} onChange={handleChange} />
-<label>Price:</label>
-<input type="text" name="Price" value={data.Price} onChange={handleChange} />
-<label>Quantity:</label>
-<input type="text" name="Quantity" value={data.Quantity} onChange={handleChange} />
-<button type="submit">Update</button>
-</form>
-</div>
-);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    Axios.put(`http://localhost:3100/IMS/${updateData._id}`, { data: updateData }).then((response) => {
+      alert(response.data);
+      setUpdateData({ _id: "", Item_Name: "", Price: "", Quantity: "" });
+      window.location.reload();
+    });
+  };
+
+  const displayData = () => {
+    return data.map((item) => {
+      return (
+        <tr key={item._id}>
+          <td>{item.Item_Name}</td>
+          <td>{item.Price}</td>
+          <td>{item.Quantity}</td>
+          <td>
+            <button onClick={() => setUpdateData(item)}>Update</button>
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  return (
+    <div className="App">
+      <h1>Update InventoryMS</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>{displayData()}</tbody>
+      </table>
+      <br />
+      {updateData._id && (
+        <div>
+          <h3>Update Item</h3>
+          <form onSubmit={submitHandler}>
+            <label>Item Name:</label>
+            <input type="text" name="Item_Name" value={updateData.Item_Name} onChange={changeHandler} />
+            <br />
+            <label>Price:</label>
+            <input type="text" name="Price" value={updateData.Price} onChange={changeHandler} />
+            <br />
+            <label>Quantity:</label>
+            <input type="text" name="Quantity" value={updateData.Quantity} onChange={changeHandler} />
+            <br />
+            <button type="submit">Update</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Update;
