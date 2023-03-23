@@ -1,0 +1,16 @@
+.Border{
+    border:3px solid black;
+  }
+  .App {
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 20px;
+    max-width: 120px;
+  }
+  .Border1{
+    border:3px solid black;
+  }
+  .Img{
+    height: 100px;
+    width: 100px;
+  }
