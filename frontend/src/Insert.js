@@ -13,23 +13,53 @@ function Insert() {
     alert("Data inserted")
   }
   return (
-    <div className="App">
     <div >
-    < div style={{backgroundQuantity:'url("https://img.freepik.com/free-photo/white-concrete-wall_53876-92803.jpg?w=1060&t=st=1677212043~exp=1677212643~hmac=d3d75b5e63b8f097ce35cb2ee31ac881b29105e47bcc633013452f1725bc8974")',paddingBottom:'50px',borderBlockColor:'white'}}>
+    <div >
+    < div style={{backgroundImage:'url("https://thumbs.dreamstime.com/z/white-pastel-rough-crack-cement-texture-stone-concrete-rock-plastered-stucco-wall-painted-flat-fade-background-gray-solid-floor-145190704.jpg")',paddingBottom:'50px',borderBlockColor:'white'}}>
     <center>
-    <h1 >Inserting new Item_Name:</h1>
+    <h1 ><em>Inserting new Item Detail:</em></h1>
     <hr/>
     <br/>
     <br/>
     <div >
     <form onSubmit={submitHandler}>
-      <label ><em>Name of the Item_Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</em></label>
-      <input type="text" name="Item_Name" value={data.Item_Name} onChange={changeHandler}/><br/><br/>
-      <label ><em>Price of the Item_Name &nbsp;&nbsp;&nbsp;:&nbsp;</em></label>
-      <input type="text" name="Price" value={data.Price} onChange={changeHandler}/><br/><br/>
-      <label ><em>Quantity link of the Item_Name: :&nbsp;</em></label>
-      <input type="text" name="Quantity" value={data.Quantity} onChange={changeHandler}/><br/><br/>
-      <button type="submit" >Insert</button>
+    <div class="row mb-3">
+      <label for="formGroupExampleInput" class="col-sm-3 col-form-label "><em>Name of the Item Name :&nbsp;</em></label>
+      <div class="col-sm-7">
+      <input type="text" 
+      class="form-control" 
+      id="formGroupExampleInput" 
+      placeholder="Enter Item Name"
+      name="Item_Name" 
+      value={data.Item_Name} 
+      onChange={changeHandler}/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="formGroupExampleInput" class="col-sm-3 col-form-label"><em>Price of the Item :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em></label>
+      <div class="col-sm-7">
+      <input type="text" 
+      class="form-control" 
+      id="formGroupExampleInput" 
+      placeholder="Enter Price"
+      name="Price" 
+      value={data.Price} 
+      onChange={changeHandler}/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="formGroupExampleInput" class="col-sm-3 col-form-label"><em>Quantity  of the Item :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em></label>
+      <div class="col-sm-7">
+      <input type="text" 
+      class="form-control" 
+      id="formGroupExampleInput" 
+      placeholder="Enter Quantity"
+      name="Quantity" 
+      value={data.Quantity} 
+      onChange={changeHandler}/>
+      </div>
+    </div>
+      <button type="submit" class="btn btn-outline-dark">Insert</button>
     </form>
     </div>
     </center>
