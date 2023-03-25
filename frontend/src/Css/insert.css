@@ -1,0 +1,54 @@
+.size {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    color: black;
+    font-size: 1.2rem;
+  }
+  
+  .form-control:focus {
+    border-color: black;
+    box-shadow: none;
+  }
+  
+  .btn-primary {
+    border: none;
+    border-radius: 0;
+    background-color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  hr {
+    width: 50%;
+    border-top: 2px solid black;
+    margin: 2rem auto;
+  }
+  
