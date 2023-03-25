@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://Anudeep:Anudeep2003@cluster0.c232uy0.mongodb.net/new', {
+mongoose.connect('mongodb+srv://nishanth:nishanth2003@cluster0.fbotoww.mongodb.net/Inventory', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
