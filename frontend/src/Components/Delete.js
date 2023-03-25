@@ -36,6 +36,8 @@ function Delete() {
             <th>Item Name</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>To do by</th>
+              <th>Items Sold</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -45,6 +47,8 @@ function Delete() {
               <td>{item.Item_Name}</td>
               <td>{item.Quantity}</td>
               <td>{item.Price}</td>
+              <td>{item.Date}</td>
+              <td>{item.Sold}</td>
               <td><button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button></td>
             </tr>
           ))}

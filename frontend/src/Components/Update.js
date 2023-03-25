@@ -22,7 +22,7 @@ function Update() {
     e.preventDefault();
     Axios.put(`http://localhost:3100/IMS/${updateData._id}`, { data: updateData }).then((response) => {
       alert(response.data);
-      setUpdateData({ _id: "", Item_Name: "", Price: "", Quantity: "" });
+      setUpdateData({ _id: "", Item_Name: "", Price: "", Quantity: "", Date:"", Sold:"" });
       window.location.reload();
     });
   };
@@ -34,6 +34,8 @@ function Update() {
           <td>{item.Item_Name}</td>
           <td>{item.Price}</td>
           <td>{item.Quantity}</td>
+          <td>{item.Date}</td>
+          <td>{item.Sold}</td>
           <td>
             <button onClick={() => setUpdateData(item)}>Update</button>
           </td>
@@ -51,6 +53,8 @@ function Update() {
             <th>Item Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>To do by</th>
+              <th>Items Sold</th>
             <th>Update</th>
           </tr>
         </thead>
@@ -69,6 +73,12 @@ function Update() {
             <br />
             <label className="update-form-label" class="col-sm-3 col-form-label text-">Quantity:</label>
             <input type="text" name="Quantity" value={updateData.Quantity} onChange={changeHandler} className="update-form-input" />
+            <br />
+            <label className="update-form-label" class="col-sm-3 col-form-label text-">Needed before:</label>
+            <input type="text" name="Date" value={updateData.Date} onChange={changeHandler} className="update-form-input" />
+            <br />
+            <label className="update-form-label" class="col-sm-3 col-form-label text-">Quantity Sold:</label>
+            <input type="text" name="Sold" value={updateData.Sold} onChange={changeHandler} className="update-form-input" />
             <br />
             <button type="submit" className="update-form-button">Update</button>
           </form>

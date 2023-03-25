@@ -18,6 +18,8 @@ function Display() {
           <td>{item.Item_Name}</td>
           <td>{item.Price}</td>
           <td>{item.Quantity}</td>
+          <td>{item.Date}</td>
+          <td>{item.Sold}</td>
         </tr>
       );
     });
@@ -40,6 +42,8 @@ function Display() {
               <th>Item Name</th>
               <th>Price</th>
               <th>Quantity</th>
+              <th>To do by</th>
+              <th>Items Sold</th>
             </tr>
           </thead>
           <tbody>{displayData()}</tbody>

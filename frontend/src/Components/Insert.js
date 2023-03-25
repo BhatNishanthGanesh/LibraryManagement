@@ -7,7 +7,7 @@ function Insert() {
     let val=e.target.value;
     setData({...data,[name1]: val});
   }
-  const [data,setData]=useState({Item_Name:"",Price:"",Quantity:""})
+  const [data,setData]=useState({Item_Name:"",Price:"",Quantity:"",Date:"",Sold:""})
   //Submit Handler
   const submitHandler=()=>{
     Axios.post("http://localhost:3100/insert",{data});
@@ -57,6 +57,30 @@ function Insert() {
       placeholder="Enter Quantity"
       name="Quantity" 
       value={data.Quantity} 
+      onChange={changeHandler}/>
+      </div>
+      </div>
+    <div class="row mb-3">
+      <label for="formGroupExampleInput" class="col-sm-3 col-form-label text-dark"><em>Required before :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em></label>
+      <div class="col-sm-7">
+      <input type="text" 
+      class="form-control" 
+      id="formGroupExampleInput" 
+      placeholder="DD-MM-YYYY"
+      name="Date" 
+      value={data.Date} 
+      onChange={changeHandler}/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="formGroupExampleInput" class="col-sm-3 col-form-label text-dark"><em>Item sold in previous month :</em></label>
+      <div class="col-sm-7">
+      <input type="text" 
+      class="form-control" 
+      id="formGroupExampleInput" 
+      placeholder="Enter the quantity"
+      name="Sold" 
+      value={data.Sold} 
       onChange={changeHandler}/>
       </div>
     </div>
