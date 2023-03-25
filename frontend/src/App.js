@@ -7,6 +7,7 @@ import Update from './Components/Update';
 import Delete from './Components/Delete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import About from './Components/About';
 const App = () => {
     return (
         <div>
@@ -18,7 +19,9 @@ const App = () => {
                     <Route path="/Insert" element={<Insert />} />
                     <Route path="/Display" element={<Display/>}/>
                     <Route path="/Update" element={<Update/>}/>
-                    <Route path="/Delete" element={<Delete/>}/>
+                    <Route path="/Delete" element={<Delete/>}/>                    
+                    <Route path="/About" element={<About/>}/>                    
+
                 </Routes>
             </div>
         </div>

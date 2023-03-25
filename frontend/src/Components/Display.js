@@ -11,8 +11,22 @@ function Display() {
     });
   }, []);
 
+  const displayData = () => {
+    return posts.map((item) => {
+      return (
+        <tr key={item._id}>
+          <td>{item.Item_Name}</td>
+          <td>{item.Price}</td>
+          <td>{item.Quantity}</td>
+        </tr>
+      );
+    });
+  };
+  
+
   return (
     <div className="display-page">
+      <center>
       <div className="Border">
         <h2 className="title">
           <em>Items presented are</em>
@@ -20,17 +34,19 @@ function Display() {
         {posts.length === 0 ? (
           <p>No items found</p>
         ) : (
-          <div className="post-container">
-            {posts.map((post) => (
-              <div className="post" key={post.id}>
-                <h5 className="item-name">{post.Item_Name}</h5>
-                <p className="price">{post.Price}</p>
-                <p className="quantity">{post.Quantity}</p>
-              </div>
-            ))}
-          </div>
+          <table className="update-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>{displayData()}</tbody>
+        </table>
         )}
       </div>
+      </center>
     </div>
   );
 }

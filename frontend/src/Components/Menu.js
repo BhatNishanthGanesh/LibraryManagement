@@ -39,6 +39,11 @@ const Menu = () => {
                   Delete
                 </a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link text-success" href="/About">
+                  About us
+                </a>
+              </li>
             </ul>
           </div>
         </div>

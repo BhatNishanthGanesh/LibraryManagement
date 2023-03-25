@@ -67,7 +67,7 @@ function Update() {
             <label className="update-form-label" class="col-sm-3 col-form-label text-light">Price:</label>
             <input type="text" name="Price" value={updateData.Price} onChange={changeHandler} className="update-form-input" />
             <br />
-            <label className="update-form-label" class="col-sm-3 col-form-label text-light">Quantity:</label>
+            <label className="update-form-label" class="col-sm-3 col-form-label text-">Quantity:</label>
             <input type="text" name="Quantity" value={updateData.Quantity} onChange={changeHandler} className="update-form-input" />
             <br />
             <button type="submit" className="update-form-button">Update</button>
