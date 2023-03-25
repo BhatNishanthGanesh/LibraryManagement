@@ -6,6 +6,7 @@
 body{
   background-color: black;
   color: white;
+  overflow: hidden;
 }
 .Border{
   /* background-color:#1bae1b; */
