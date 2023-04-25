@@ -102,20 +102,22 @@ function Insert2() {
 
 
 function Insert() {
-  const [showInsert, setShowInsert] = useState(false);
+  const [showInsert, setShowInsert] = useState(true);
   const [showInsert1, setShowInsert1] = useState(false);
   const toggleInsert = () => {
     setShowInsert(!showInsert);
+    setShowInsert1(!showInsert1);
   };
   const toggleInsert1 = () => {
     setShowInsert1(!showInsert1);
+    setShowInsert(!showInsert);
   };
 
   return (
     <div>
       <button onClick={toggleInsert}>For Library</button>
-      {showInsert && <Insert1 />}
       <button onClick={toggleInsert1}>For Ebook</button>
+      {showInsert && <Insert1 />}
       {showInsert1 && <Insert2 />}
     </div>
   );

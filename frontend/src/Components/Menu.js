@@ -40,6 +40,11 @@ const Menu = () => {
                 </a>
               </li>
               <li className="nav-item">
+                <a className="nav-link text-success" href="/Search">
+                  Search
+                </a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link text-success" href="/About">
                   About us
                 </a>

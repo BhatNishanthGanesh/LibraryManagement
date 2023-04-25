@@ -110,20 +110,22 @@ function Display2() {
 
 
 function Display() {
-  const [showDisplay, setshowDisplay] = useState(false);
+  const [showDisplay, setshowDisplay] = useState(true);
   const [showDisplay1, setshowDisplay1] = useState(false);
   const toggleDisplay = () => {
     setshowDisplay(!showDisplay);
+    setshowDisplay1(!showDisplay1);
   };
   const toggleDisplay1 = () => {
     setshowDisplay1(!showDisplay1);
+    setshowDisplay(!showDisplay);
   };
 
   return (
     <div>
       <button onClick={toggleDisplay}>For Library</button>
-      {showDisplay && <Display1 />}
       <button onClick={toggleDisplay1}>For Ebook</button>
+      {showDisplay && <Display1 />}
       {showDisplay1 && <Display2 />}
     </div>
   );

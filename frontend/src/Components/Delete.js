@@ -115,20 +115,22 @@ function Delete2() {
   );
 }
 function Delete() {
-  const [showDelete, setShowDelete] = useState(false);
+  const [showDelete, setShowDelete] = useState(true);
   const [showDelete1, setShowDelete1] = useState(false);
   const toggleDelete = () => {
     setShowDelete(!showDelete);
+    setShowDelete1(!showDelete1);
   };
   const toggleDelete1 = () => {
     setShowDelete1(!showDelete1);
+    setShowDelete(!showDelete);
   };
 
   return (
     <div>
       <button onClick={toggleDelete}>For Library</button>
-      {showDelete && <Delete1 />}
       <button onClick={toggleDelete1}>For Ebook</button>
+      {showDelete && <Delete1 />}
       {showDelete1 && <Delete2 />}
     </div>
   );
