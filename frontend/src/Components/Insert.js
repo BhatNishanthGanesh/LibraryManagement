@@ -105,12 +105,12 @@ function Insert() {
   const [showInsert, setShowInsert] = useState(true);
   const [showInsert1, setShowInsert1] = useState(false);
   const toggleInsert = () => {
-    setShowInsert(!showInsert);
-    setShowInsert1(!showInsert1);
+    setShowInsert(true);
+    setShowInsert1(false);
   };
   const toggleInsert1 = () => {
-    setShowInsert1(!showInsert1);
-    setShowInsert(!showInsert);
+    setShowInsert1(true);
+    setShowInsert(false);
   };
 
   return (

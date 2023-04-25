@@ -118,12 +118,12 @@ function Delete() {
   const [showDelete, setShowDelete] = useState(true);
   const [showDelete1, setShowDelete1] = useState(false);
   const toggleDelete = () => {
-    setShowDelete(!showDelete);
-    setShowDelete1(!showDelete1);
+    setShowDelete(true);
+    setShowDelete1(false);
   };
   const toggleDelete1 = () => {
-    setShowDelete1(!showDelete1);
-    setShowDelete(!showDelete);
+    setShowDelete1(true);
+    setShowDelete(false);
   };
 
   return (

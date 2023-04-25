@@ -32,7 +32,7 @@ function Display1() {
       <center>
         <div className="Border">
           <h2 className="title">
-            <em>Books presented are</em>
+            <em>Books presented in Library are</em>
           </h2>
           <p>Total Books: {count}</p>
           {posts.length === 0 ? (
@@ -85,7 +85,7 @@ function Display2() {
       <center>
         <div className="Border">
           <h2 className="title">
-            <em>Books presented are</em>
+            <em>eBooks presented are</em>
           </h2>
           <p>Total Books: {count}</p>
           {posts.length === 0 ? (
@@ -113,12 +113,12 @@ function Display() {
   const [showDisplay, setshowDisplay] = useState(true);
   const [showDisplay1, setshowDisplay1] = useState(false);
   const toggleDisplay = () => {
-    setshowDisplay(!showDisplay);
-    setshowDisplay1(!showDisplay1);
+    setshowDisplay(true);
+    setshowDisplay1(false);
   };
   const toggleDisplay1 = () => {
-    setshowDisplay1(!showDisplay1);
-    setshowDisplay(!showDisplay);
+    setshowDisplay1(true);
+    setshowDisplay(false);
   };
 
   return (
