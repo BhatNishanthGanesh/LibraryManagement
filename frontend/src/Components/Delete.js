@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Css/Delete.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Delete1() {
   const [inventoryData, setInventoryData] = useState([]);
@@ -50,7 +52,7 @@ function Delete1() {
               <td>{item.Author}</td>
               {/* <td>{item.Date}</td> */}
               {/* <td>{item.Sold}</td> */}
-              <td><button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button></td>
+              <td><button className="delete-button" onClick={() => handleDelete(item._id)}><FontAwesomeIcon icon={faTrash} />Delete</button></td>
             </tr>
           ))}
         </tbody>
@@ -106,7 +108,7 @@ function Delete2() {
               <td>{item.Author}</td>
               {/* <td>{item.Date}</td> */}
               {/* <td>{item.Sold}</td> */}
-              <td><button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button></td>
+              <td><button className="delete-button" onClick={() => handleDelete(item._id)}><FontAwesomeIcon icon={faTrash} />Delete</button></td>
             </tr>
           ))}
         </tbody>
@@ -128,8 +130,8 @@ function Delete() {
 
   return (
     <div>
-      <button onClick={toggleDelete}>For Library</button>
-      <button onClick={toggleDelete1}>For Ebook</button>
+      <button onClick={toggleDelete} style={{borderRadius:"20%"}}>For Library</button>
+      <button onClick={toggleDelete1} style={{borderRadius:"20%"}}>For Ebook</button>
       {showDelete && <Delete1 />}
       {showDelete1 && <Delete2 />}
     </div>

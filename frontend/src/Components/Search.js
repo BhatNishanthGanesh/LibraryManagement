@@ -151,8 +151,8 @@ function Search() {
   
     return (
       <div>
-        <button onClick={toggleSearch}>For Library</button>
-        <button onClick={toggleSearch1}>For Ebook</button>
+        <button onClick={toggleSearch} style={{borderRadius:"20%"}}>For Library</button>
+        <button onClick={toggleSearch1} style={{borderRadius:"20%"}}>For Ebook</button>
         {showSearch && <Search1/>}
         {showSearch1 && <Search2 />}
       </div>
@@ -160,5 +160,3 @@ function Search() {
   }
   
   export default Search;
-
-

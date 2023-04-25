@@ -44,10 +44,18 @@
   solid black;
 }
 
+.update-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
 .update-table th,
 .update-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border: 5px inset  #654321;
+  padding: 10px;
   text-align: left;
 }
 
+th,td{
+  background-color: #8B4513;
+}

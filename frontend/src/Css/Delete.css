@@ -1,26 +1,33 @@
 .inventory-list-container {
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 20px;
-  }
-  
-  .inventory-list-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .inventory-list-table th, .inventory-list-table td {
-    border: 2px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .delete-button {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.inventory-list-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.inventory-list-table th, .inventory-list-table td {
+  border: 5px inset  #654321;
+padding: 10px;
+text-align: left;
+}
+th,td{
+  background-color: #8B4513;
+}
+.delete-button {
+  background-color: grey;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.delete-button svg {
+  margin-right: 8px;
+}

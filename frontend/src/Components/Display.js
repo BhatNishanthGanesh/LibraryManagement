@@ -123,8 +123,8 @@ function Display() {
 
   return (
     <div>
-      <button onClick={toggleDisplay}>For Library</button>
-      <button onClick={toggleDisplay1}>For Ebook</button>
+      <button onClick={toggleDisplay} style={{borderRadius:"20%"}}>For Library</button>
+      <button onClick={toggleDisplay1} style={{borderRadius:"20%"}}>For Ebook</button>
       {showDisplay && <Display1 />}
       {showDisplay1 && <Display2 />}
     </div>

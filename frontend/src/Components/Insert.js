@@ -14,7 +14,7 @@ function Insert1() {
   }
   return (
     <div>
-      <div style={{backgroundImage:'url("https://thumbs.dreamstime.com/z/white-pastel-rough-crack-cement-texture-stone-concrete-rock-plastered-stucco-wall-painted-flat-fade-background-gray-solid-floor-145190704.jpg")',paddingBottom:'50px',borderBlockColor:'white'}}>
+      <div style={{backgroundImage:'url("https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',paddingBottom:'50px',borderBlockColor:'white'}}>
         <center>
           <h1><em>Inserting new Book Detail:</em></h1>
           <hr/>
@@ -64,7 +64,7 @@ function Insert2() {
   }
   return (
     <div>
-      <div style={{backgroundImage:'url("https://thumbs.dreamstime.com/z/white-pastel-rough-crack-cement-texture-stone-concrete-rock-plastered-stucco-wall-painted-flat-fade-background-gray-solid-floor-145190704.jpg")',paddingBottom:'50px',borderBlockColor:'white'}}>
+      <div style={{backgroundImage:'url("https://images.pexels.com/photos/1205301/pexels-photo-1205301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',paddingBottom:'50px',borderBlockColor:'white'}}>
         <center>
           <h1><em>Inserting new eBook Detail:</em></h1>
           <hr/>
@@ -115,12 +115,13 @@ function Insert() {
 
   return (
     <div>
-      <button onClick={toggleInsert}>For Library</button>
-      <button onClick={toggleInsert1}>For Ebook</button>
+      <button onClick={toggleInsert} style={{borderRadius:"20%"}}>For Library</button>
+      <button onClick={toggleInsert1} style={{borderRadius:"20%"}}>For Ebook</button>
       {showInsert && <Insert1 />}
       {showInsert1 && <Insert2 />}
     </div>
   );
 }
+        
 
 export default Insert;
