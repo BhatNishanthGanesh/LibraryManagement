@@ -3,7 +3,7 @@ import Home from './Components/Home';
 import { Routes, Route } from 'react-router-dom';
 import Insert from './Components/Insert'
 import Display from './Components/Display'
-import Update from './Components/Update';
+// import Update from './Components/Update';
 import Delete from './Components/Delete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
@@ -18,7 +18,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/Insert" element={<Insert />} />
                     <Route path="/Display" element={<Display/>}/>
-                    <Route path="/Update" element={<Update/>}/>
+                    {/* <Route path="/Update" element={<Update/>}/> */}
                     <Route path="/Delete" element={<Delete/>}/>                    
                     <Route path="/About" element={<About/>}/>                    
 
