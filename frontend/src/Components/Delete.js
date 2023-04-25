@@ -6,7 +6,7 @@ function Delete() {
   const [inventoryData, setInventoryData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3100/IMS')
+    axios.get('http://localhost:3100/BOOK')
       .then(response => {
         setInventoryData(response.data);
       })
@@ -16,7 +16,7 @@ function Delete() {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3100/IMS/${id}`)
+    axios.delete(`http://localhost:3100/BOOK/${id}`)
     alert('Deleted successfully');
     setInventoryData(inventoryData.filter(item => item._id !== id))
       .then(response => {
@@ -33,22 +33,23 @@ function Delete() {
       <table className="inventory-list-table">
         <thead>
           <tr>
-            <th>Item Name</th>
+            <th>Book Name</th>
             <th>Quantity</th>
-            <th>Price</th>
-            <th>To do by</th>
-              <th>Items Sold</th>
-            <th>Action</th>
+            <th>Author Name</th>
+            <th>DELETE</th>
+            {/* <th>To do by</th> */}
+              {/* <th>Items Sold</th> */}
+            {/* <th>Action</th> */}
           </tr>
         </thead>
         <tbody>
           {inventoryData.map((item, index) => (
             <tr key={index}>
-              <td>{item.Item_Name}</td>
+              <td>{item.Book_Name}</td>
               <td>{item.Quantity}</td>
-              <td>{item.Price}</td>
-              <td>{item.Date}</td>
-              <td>{item.Sold}</td>
+              <td>{item.Author}</td>
+              {/* <td>{item.Date}</td> */}
+              {/* <td>{item.Sold}</td> */}
               <td><button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button></td>
             </tr>
           ))}

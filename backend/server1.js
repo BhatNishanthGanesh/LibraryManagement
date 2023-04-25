@@ -9,21 +9,21 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://nishanth:nishanth2003@cluster0.fbotoww.mongodb.net/Libary', {
+mongoose.connect('mongodb+srv://nishanth:nishanth2003@cluster0.fbotoww.mongodb.net/Ebook', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const libarySchema = new mongoose.Schema({
+const EbookSchema = new mongoose.Schema({
   Book_Name: String,
   Author: String,
-  Quantity: String,
+  Link: String,
 });
 
-const libary = mongoose.model('libary', libarySchema);
+const Ebook = mongoose.model('Ebook', EbookSchema);
 
-app.get('/BOOK', (req, res) => {
-  libary.find({}, (err, foundItems) => {
+app.get('/eBOOK', (req, res) => {
+  Ebook.find({}, (err, foundItems) => {
     if (!err) {
       res.send(foundItems);
     } else {
@@ -35,11 +35,11 @@ app.get('/BOOK', (req, res) => {
 app.post('/insert', (req, res) => {
   const bookName = req.body.data.Book_Name;
   const Author = req.body.data.Author;
-  const quantity = req.body.data.Quantity;
-  const newItem = new libary({
+  const Link = req.body.data.Link;
+  const newItem = new Ebook({
     Book_Name: bookName,
     Author: Author,
-    Quantity: quantity,
+    Link: Link,
   });
 
   newItem.save((err) => {
@@ -52,10 +52,10 @@ app.post('/insert', (req, res) => {
   });
 });
 
-app.delete('/BOOK/:id', (req, res) => {
+app.delete('/eBOOK/:id', (req, res) => {
   const id = req.params.id;
 
-  libary.findByIdAndRemove(id, (err) => {
+  Ebook.findByIdAndRemove(id, (err) => {
     if (!err) {
       console.log('Successfully deleted item.');
     } else {
@@ -64,13 +64,13 @@ app.delete('/BOOK/:id', (req, res) => {
   });
 });
 
-app.put("/BOOK/:id", (req, res) => {
-  const { Book_Name, Author, Quantity} = req.body.data;
+app.put("/eBOOK/:id", (req, res) => {
+  const { Book_Name, Author, Link} = req.body.data;
   const id = req.params.id;
 
-  libary.findByIdAndUpdate(
+  Ebook.findByIdAndUpdate(
     id,
-    { Book_Name, Author, Quantity},
+    { Book_Name, Author, Link},
     { new: true },
     (err, result) => {
       if (err) {
@@ -83,7 +83,7 @@ app.put("/BOOK/:id", (req, res) => {
   );
 });
 
-const port = process.env.PORT || 3100;
+const port = process.env.PORT || 3200;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });

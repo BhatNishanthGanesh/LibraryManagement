@@ -4,7 +4,7 @@ const Menu = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-body-secondary">
         <div className="container-fluid">
           <a className="navbar-brand text-primary fw-bold" href="/">
-            Inventory-Management
+            Library Books Management
           </a>
           <button
             className="navbar-toggler"
@@ -29,11 +29,11 @@ const Menu = () => {
                   Display
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link text-success" href="/Update">
                   Update
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link text-success" href="/Delete">
                   Delete
@@ -52,4 +52,3 @@ const Menu = () => {
   };
   
   export default Menu;
-  

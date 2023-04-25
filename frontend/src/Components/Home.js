@@ -17,10 +17,10 @@ const Home = () => {
         </div>
         <div className="row" style={{ display: "flex", justifyContent: "space-between",paddingLeft:"18em" }}>
   <div className="col-md-6">
-    <img src={image1} alt="Image 1" className="img-fluid my-5 rounded-circle" style={{ width: "200px", height: "200px" }} />
+    <img src={image1} alt="Pragathi" className="img-fluid my-5 rounded-circle" style={{ width: "200px", height: "200px" }} />
   </div>
   <div className="col-md-6">
-    <img src={image2} alt="Image 2" className="img-fluid my-5 rounded-circle" style={{ width: "200px", height: "200px" }} />
+    <img src={image2} alt="Pragathi" className="img-fluid my-5 rounded-circle" style={{ width: "200px", height: "200px" }} />
   </div>
 </div>
 
