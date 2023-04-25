@@ -29,7 +29,7 @@ function Delete1() {
 
   return (
     <div className="inventory-list-container">
-      <h1>Inventory List</h1>
+      <h1>Library List</h1>
       <table className="inventory-list-table">
         <thead>
           <tr>
@@ -85,7 +85,7 @@ function Delete2() {
 
   return (
     <div className="inventory-list-container">
-      <h1>Inventory List</h1>
+      <h1>Library List</h1>
       <table className="inventory-list-table">
         <thead>
           <tr>
