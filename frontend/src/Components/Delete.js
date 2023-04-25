@@ -126,7 +126,7 @@ function Delete() {
 
   return (
     <div>
-      <button onClick={toggleDelete}>For Libary</button>
+      <button onClick={toggleDelete}>For Library</button>
       {showDelete && <Delete1 />}
       <button onClick={toggleDelete1}>For Ebook</button>
       {showDelete1 && <Delete2 />}

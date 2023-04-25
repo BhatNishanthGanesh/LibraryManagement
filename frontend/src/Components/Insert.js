@@ -16,7 +16,7 @@ function Insert1() {
     <div>
       <div style={{backgroundImage:'url("https://thumbs.dreamstime.com/z/white-pastel-rough-crack-cement-texture-stone-concrete-rock-plastered-stucco-wall-painted-flat-fade-background-gray-solid-floor-145190704.jpg")',paddingBottom:'50px',borderBlockColor:'white'}}>
         <center>
-          <h1><em>Inserting new Item Detail:</em></h1>
+          <h1><em>Inserting new Book Detail:</em></h1>
           <hr/>
           <br/>
           <br/>
@@ -66,7 +66,7 @@ function Insert2() {
     <div>
       <div style={{backgroundImage:'url("https://thumbs.dreamstime.com/z/white-pastel-rough-crack-cement-texture-stone-concrete-rock-plastered-stucco-wall-painted-flat-fade-background-gray-solid-floor-145190704.jpg")',paddingBottom:'50px',borderBlockColor:'white'}}>
         <center>
-          <h1><em>Inserting new Book Detail:</em></h1>
+          <h1><em>Inserting new eBook Detail:</em></h1>
           <hr/>
           <br/>
           <br/>
@@ -113,7 +113,7 @@ function Insert() {
 
   return (
     <div>
-      <button onClick={toggleInsert}>For Libary</button>
+      <button onClick={toggleInsert}>For Library</button>
       {showInsert && <Insert1 />}
       <button onClick={toggleInsert1}>For Ebook</button>
       {showInsert1 && <Insert2 />}

@@ -121,7 +121,7 @@ function Display() {
 
   return (
     <div>
-      <button onClick={toggleDisplay}>For Libary</button>
+      <button onClick={toggleDisplay}>For Library</button>
       {showDisplay && <Display1 />}
       <button onClick={toggleDisplay1}>For Ebook</button>
       {showDisplay1 && <Display2 />}
