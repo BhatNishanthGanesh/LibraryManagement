@@ -1,28 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
-function Search() {
-  const [libraryResults, setLibraryResults] = useState([]);
-  const [ebookResults, setEbookResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+function Search1() {
+  const [posts, setPosts] = useState([]);
+  const [count, setCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = () => {
-    Axios.get(`http://localhost:3100/BOOK?Book_Name=%${searchTerm}%`).then((response) => {
-      const libraryResults = response.data;
-      Axios.get(`http://localhost:3200/eBOOK?Book_Name=%${searchTerm}%`).then((response) => {
-        const ebookResults = response.data;
-        const matchingResults = libraryResults.filter((libraryBook) => {
-          return ebookResults.some((ebookBook) => ebookBook.Book_Name === libraryBook.Book_Name);
-        });
-        setLibraryResults(matchingResults);
-        setEbookResults(matchingResults);
-      });
+  useEffect(() => {
+    Axios.get("http://localhost:3100/BOOK").then((response) => {
+      setPosts(response.data);
+      setCount(response.data.length);
     });
-  }  
-  
+  }, []);
 
-  const displayLibraryResults = () => {
-    return libraryResults.map((item) => {
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredPosts = posts.filter((item) =>
+    item.Book_Name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const displayData = () => {
+    return filteredPosts.map((item) => {
       return (
         <tr key={item._id}>
           <td>{item.Book_Name}</td>
@@ -33,8 +33,64 @@ function Search() {
     });
   };
 
-  const displayEbookResults = () => {
-    return ebookResults.map((item) => {
+  return (
+    <div className="display-page">
+      <center>
+        <div className="Border">
+          <h2 className="title">
+            <em>Books presented in Library are</em>
+          </h2>
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search by book name"
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+          <p>Total Books: {count}</p>
+          {filteredPosts.length === 0 ? (
+            <p>No Books found</p>
+          ) : (
+            <table className="update-table">
+              <thead>
+                <tr>
+                  <th>Book Name</th>
+                  <th>Author Name</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>{displayData()}</tbody>
+            </table>
+          )}
+        </div>
+      </center>
+    </div>
+  );
+}
+
+function Search2() {
+  const [posts, setPosts] = useState([]);
+  const [count, setCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    Axios.get("http://localhost:3200/eBOOK").then((response) => {
+      setPosts(response.data);
+      setCount(response.data.length);
+    });
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredPosts = posts.filter((item) =>
+    item.Book_Name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const displayData = () => {
+    return filteredPosts.map((item) => {
       return (
         <tr key={item._id}>
           <td>{item.Book_Name}</td>
@@ -46,56 +102,34 @@ function Search() {
   };
 
   return (
-    <div className="search-page">
+    <div className="display-page">
       <center>
         <div className="Border">
           <h2 className="title">
-            <em>Search for Books</em>
+            <em>eBooks presented are</em>
           </h2>
-          <div className="search-box">
+          <div className="search-bar">
             <input
               type="text"
-              placeholder="Enter Book Name"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search by book name"
+              value={searchQuery}
+              onChange={handleSearch}
             />
-            <button onClick={handleSearch}>Search</button>
           </div>
-          {libraryResults.length === 0 && ebookResults.length === 0 ? (
+          <p>Total Books: {count}</p>
+          {filteredPosts.length === 0 ? (
             <p>No Books found</p>
           ) : (
-            <div>
-              {libraryResults.length !== 0 && (
-                <div>
-                  <h3>Books in Library</h3>
-                  <table className="search-table">
-                    <thead>
-                      <tr>
-                        <th>Book Name</th>
-                        <th>Author Name</th>
-                        <th>Quantity</th>
-                      </tr>
-                    </thead>
-                    <tbody>{displayLibraryResults()}</tbody>
-                  </table>
-                </div>
-              )}
-              {ebookResults.length !== 0 && (
-                <div>
-                  <h3>eBooks</h3>
-                  <table className="search-table">
-                    <thead>
-                      <tr>
-                        <th>Book Name</th>
-                        <th>Author Name</th>
-                        <th>Link</th>
-                      </tr>
-                    </thead>
-                    <tbody>{displayEbookResults()}</tbody>
-                  </table>
-                </div>
-              )}
-            </div>
+            <table className="update-table">
+              <thead>
+                <tr>
+                  <th>Book Name</th>
+                  <th>Author Name</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>{displayData()}</tbody>
+            </table>
           )}
         </div>
       </center>
@@ -103,4 +137,28 @@ function Search() {
   );
 }
 
-export default Search;
+function Search() {
+    const [showSearch, setshowSearch] = useState(true);
+    const [showSearch1, setshowSearch1] = useState(false);
+    const toggleSearch = () => {
+      setshowSearch(true);
+      setshowSearch1(false);
+    };
+    const toggleSearch1 = () => {
+      setshowSearch1(true);
+      setshowSearch(false);
+    };
+  
+    return (
+      <div>
+        <button onClick={toggleSearch}>For Library</button>
+        <button onClick={toggleSearch1}>For Ebook</button>
+        {showSearch && <Search1/>}
+        {showSearch1 && <Search2 />}
+      </div>
+    );
+  }
+  
+  export default Search;
+
+
