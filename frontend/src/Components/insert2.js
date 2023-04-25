@@ -46,7 +46,6 @@ function Insert1() {
         </center>
       </div>
     </div>
-
   );
 }
 

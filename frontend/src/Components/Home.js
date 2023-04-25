@@ -1,7 +1,6 @@
 import React from "react";
 import LibraryImage from "../images/Library.jpg";
-import image1 from "../images/1.png";
-import image2 from "../images/5.png";
+
 
 import "../Css/Home.css";
 
