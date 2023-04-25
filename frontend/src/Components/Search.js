@@ -1,75 +1,102 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
-import "../Css/Display.css";
 
-function Search({ filter }) {
-  const [books, setBooks] = useState([]);
+function Search() {
+  const [libraryResults, setLibraryResults] = useState([]);
+  const [ebookResults, setEbookResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    const getBooks = async () => {
-      try {
-        const [bookResponse, ebookResponse] = await Promise.all([
-          Axios.get("http://localhost:3100/BOOK"),
-          Axios.get("http://localhost:3200/eBOOK"),
-        ]);
-        const allBooks = [...bookResponse.data, ...ebookResponse.data];
-        setBooks(allBooks);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const handleSearch = () => {
+    Axios.get(`http://localhost:3100/BOOK?Book_Name=%${searchTerm}%`).then((response) => {
+      const libraryResults = response.data;
+      Axios.get(`http://localhost:3200/eBOOK?Book_Name=%${searchTerm}%`).then((response) => {
+        const ebookResults = response.data;
+        const matchingResults = libraryResults.filter((libraryBook) => {
+          return ebookResults.some((ebookBook) => ebookBook.Book_Name === libraryBook.Book_Name);
+        });
+        setLibraryResults(matchingResults);
+        setEbookResults(matchingResults);
+      });
+    });
+  }  
+  
 
-    getBooks();
-  }, []);
+  const displayLibraryResults = () => {
+    return libraryResults.map((item) => {
+      return (
+        <tr key={item._id}>
+          <td>{item.Book_Name}</td>
+          <td>{item.Author}</td>
+          <td>{item.Quantity}</td>
+        </tr>
+      );
+    });
+  };
 
-  const filteredBooks = books.filter(
-    (book) =>
-      book.Book_Name.toLowerCase().includes(filter.toLowerCase()) ||
-      book.Author.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  const displayData = () => {
-    if (filteredBooks.length === 0) {
-      return <p>No books found.</p>;
-    }
-
-    return (
-      <table className="update-table">
-        <thead>
-          <tr>
-            <th>Book Name</th>
-            <th>Author Name</th>
-            <th>Quantity/Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredBooks.map((book) => (
-            <tr key={book._id}>
-              <td>{book.Book_Name}</td>
-              <td>{book.Author}</td>
-              <td>
-                {book.Quantity ? (
-                  <span>{book.Quantity}</span>
-                ) : (
-                  <button onClick={() => window.open(book.Link)}>ebook</button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
+  const displayEbookResults = () => {
+    return ebookResults.map((item) => {
+      return (
+        <tr key={item._id}>
+          <td>{item.Book_Name}</td>
+          <td>{item.Author}</td>
+          <td><button onClick={() => window.open(item.Link)}>ebook</button></td>
+        </tr>
+      );
+    });
   };
 
   return (
-    <div className="display-page">
+    <div className="search-page">
       <center>
         <div className="Border">
           <h2 className="title">
-            <em>Books presented are</em>
+            <em>Search for Books</em>
           </h2>
-          <p>Total Books: {filteredBooks.length}</p>
-          {displayData()}
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Enter Book Name"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={handleSearch}>Search</button>
+          </div>
+          {libraryResults.length === 0 && ebookResults.length === 0 ? (
+            <p>No Books found</p>
+          ) : (
+            <div>
+              {libraryResults.length !== 0 && (
+                <div>
+                  <h3>Books in Library</h3>
+                  <table className="search-table">
+                    <thead>
+                      <tr>
+                        <th>Book Name</th>
+                        <th>Author Name</th>
+                        <th>Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>{displayLibraryResults()}</tbody>
+                  </table>
+                </div>
+              )}
+              {ebookResults.length !== 0 && (
+                <div>
+                  <h3>eBooks</h3>
+                  <table className="search-table">
+                    <thead>
+                      <tr>
+                        <th>Book Name</th>
+                        <th>Author Name</th>
+                        <th>Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>{displayEbookResults()}</tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </center>
     </div>
