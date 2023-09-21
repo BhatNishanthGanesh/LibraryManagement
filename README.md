@@ -1,39 +1,70 @@
-"# LibraryManagement" 
-# LibraryManagement
-Titile:-File management 
-Discription:- goal is to crreate a  web application where the library manager/administrator can keep the track of the books that are present in library and as well as keeping track of the ebooks that are available using ReactJs for frontend and MongoDb as our database.
-There are 2 databases which are for ebooks and physical books respectively which can be managed at the same time acooroding to the feasibility of the user.
-Libraries and dependencies ->React Js
-                           ->Express Js
-                           ->CORS
-                           ->Mangoose
-                           ->Axios
-                           ->Font aweseom
-                           ->Bootstrap
-Instalation steps          
-->Install Node.js: You can download and install Node.js from the official website. It comes with npm (Node Package Manager) that you'll use later on.
+# Library Management
 
-->Install MongoDB: You can download and install MongoDB from the official website. Follow the installation instructions to complete the process.
+## Project Overview
 
-->Create a new project directory: Create a new directory for your MERN stack project.
+### Title: File Management
+### Description:
+The goal of this project is to create a web application where the library manager/administrator can effectively track both physical books and ebooks in the library. The frontend is built using ReactJs, and the data is stored and managed using MongoDB.
 
-->Initialize the project: Navigate to your project directory and run the following command to initialize a new npm project:   npm init -y
+## Features
 
-->Install dependencies: Install the following dependencies using npm: 
-         npm install express body-parser cors mongoose nodemon concurrently
+- Track physical books in the library
+- Manage ebooks in the library
+- Utilizes ReactJs for a dynamic and interactive user interface
+- Utilizes MongoDB for efficient data storage and retrieval
 
-->Set up the server: Create a new file called server.js in your project directory and set up the server using Express.js and MongoDB. You can refer to the Express.js and MongoDB documentation for details.
+## Libraries and Dependencies
 
-->Set up the client: Navigate to your project directory and run the following command to create a new React.js app: npx create-react-app client
+- React Js
+- Express Js
+- CORS
+- Mangoose
+- Axios
+- Font Awesome
+- Bootstrap
 
-->Run the project: Open two terminal windows - one for the server and the other for the client. In the first terminal window, navigate to your project directory and run the following command to start the server: npm run server
-  In the second terminal window, navigate to the client directory and run the following command to start the client: npm start
+## Installation Steps
 
+1. **Install Node.js:** Download and install Node.js from the [official website](https://nodejs.org/). Node.js comes with npm (Node Package Manager) that you'll use later on.
 
-Tech stack  ->React Js
-           ->MongoDB
-           ->http
-           ->css
-           
-Decleation of previous Work:
-skeleton of the previous work was refferd whose author were the same as this project
+2. **Install MongoDB:** Download and install MongoDB from the [official website](https://www.mongodb.com/try/download/community). Follow the installation instructions to complete the process.
+
+3. **Create a New Project Directory:** Create a new directory for your MERN stack project.
+
+4. **Initialize the Project:** Navigate to your project directory and run the following command to initialize a new npm project:
+    ```
+    npm init -y
+    ```
+
+5. **Install Dependencies:** Install the necessary dependencies using npm:
+    ```
+    npm install express body-parser cors mongoose nodemon concurrently
+    ```
+
+6. **Set Up the Server:** Create a new file called `server.js` in your project directory and set up the server using Express.js and MongoDB. Refer to the Express.js and MongoDB documentation for details.
+
+7. **Set Up the Client:** Navigate to your project directory and run the following command to create a new React.js app:
+    ```
+    npx create-react-app client
+    ```
+
+8. **Run the Project:** Open two terminal windows - one for the server and the other for the client. In the first terminal window, navigate to your project directory and run the following command to start the server:
+    ```
+    npm run server
+    ```
+    In the second terminal window, navigate to the client directory and run the following command to start the client:
+    ```
+    npm start
+    ```
+
+## Tech Stack
+
+- React Js
+- MongoDB
+- HTTP
+- CSS
+
+## Declaration of Previous Work
+
+The skeleton of this project is inspired by and refers to previous work, whose authors are the same as this project.
+[ChethanPai](https://github.com/CheetahCodes21), [Anudeep KK](https://github.com/AnudeepKK) and [Nishanth Bhat](https://github.com/BhatNishanthGanesh)
